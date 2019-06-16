@@ -1,31 +1,15 @@
-const path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const path = require('path')
 
 module.exports = {
-    mode: "development",
-    // devtool:"source-map",
-    //开发
-    devtool: "cheap-module-eval-source-map",
-    //线上
-    // devtool: "cheap-module-source-map",
     entry: './src/main.js',
-    // entry: ['babel-polyfill', './src/main.js'],
-    // entry: ['@babel/polyfill','./src/main.js'],
-    devServer: {
-        contentBase: path.join(__dirname, 'src'),
-        open: true,
-        compress: true,
-        port: 8901,
-        hot: true,
-        // hotOnly:true
-    },
     output: {
         //cdn 地址
         publicPath: "/",
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, '../dist')
     },
     module: {
         rules: [
@@ -73,15 +57,11 @@ module.exports = {
 
         ]
     },
-    optimization:{
-        usedExports:true
-    },
     plugins: [
         //清空之前剩余的打包文件
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: "src/index.html"
-        },
-            new webpack.HotModuleReplacementPlugin()
-        )]
+        })
+    ]
 }
