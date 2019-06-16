@@ -4,12 +4,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-    mode: "production",
+    mode: "development",
     // devtool:"source-map",
     //开发
-    // devtool: "cheap-module-eval-source-map",
+    devtool: "cheap-module-eval-source-map",
     //线上
-    devtool: "cheap-module-source-map",
+    // devtool: "cheap-module-source-map",
     entry: './src/main.js',
     // entry: ['babel-polyfill', './src/main.js'],
     // entry: ['@babel/polyfill','./src/main.js'],

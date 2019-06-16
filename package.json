@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server --compress --progress",
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --compress --progress --config webpack.dev.js",
     "server": "node server.js"
   },
   "keywords": [],
