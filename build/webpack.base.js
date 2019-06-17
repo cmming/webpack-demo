@@ -32,27 +32,6 @@ module.exports = {
                 test: /\.(eot|ttf|svg)$/,
                 loader: 'file-loader',
             },
-            //scss
-            {
-                test: /\.css|\.scss$/,  // 正则匹配所有.css后缀的样式文件
-                use: ['style-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 2,// 让所有的 scss 都会重新使用 sass-loader postcss-loader 进行处理
-                            modules: true //样式模块化 避免全局污染
-                        }
-                    },
-                    "sass-loader",
-                    "postcss-loader"] // 使用这两个loader来加载样式文件
-            },
-            //css
-            {
-                test: /\.css$/,  // 正则匹配所有.css后缀的样式文件
-                use: ['style-loader',
-                    "css-loader",
-                    "postcss-loader"] // 使用这两个loader来加载样式文件
-            },
             { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
 
         ]
@@ -63,5 +42,15 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "src/index.html"
         })
-    ]
+    ],
+    //tree shaking 仅仅加载使用的模块
+    optimization: {
+        usedExports:true,
+        //代码分割
+        splitChunks: {
+            // include all types of chunks
+            chunks: 'all'
+        }
+
+    },
 }
