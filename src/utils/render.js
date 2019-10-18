@@ -1,9 +1,12 @@
 // http://developer.51cto.com/art/201707/545165.htm
-export default function (html, options) {
+export default function(html, options) {
 
-    var re = /<%([^%>]+)?%>/g, reExp = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g, code = 'var r=[];\n', cursor = 0;
+    var re = /<%([^%>]+)?%>/g,
+        reExp = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g,
+        code = 'var r=[];\n',
+        cursor = 0;
 
-    var add = function (line, js) {
+    var add = function(line, js) {
 
         js ? (code += line.match(reExp) ? line + '\n' : 'r.push(' + line + ');\n') :
 
@@ -27,4 +30,4 @@ export default function (html, options) {
 
     return new Function(code.replace(/[\r\t\n]/g, '')).apply(options);
 
-}  
+}

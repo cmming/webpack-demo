@@ -1,3 +1,3 @@
 export default function footer() {
-    $('body').append('footer')
+    // $('body').append('footer')
 }

@@ -1,3 +1,3 @@
 export default function content() {
-    $('body').append('content')
+    // $('body').append('content')
 }
