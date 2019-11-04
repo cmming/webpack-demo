@@ -10,7 +10,7 @@
                         "not ie <= 8"
                     ]
                 },
-                "useBuiltIns":"usage",
+                "useBuiltIns":"usage"
             }
         ]
     ],
